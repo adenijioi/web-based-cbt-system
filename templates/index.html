@@ -1,0 +1,17 @@
+{% extends 'base.html' %}{% block content %}
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">RESEARCH PROJECT</p>
+    <h1>Development and Implementation of a Web-Based Computer-Based Test System for Student Assessment Using Python</h1>
+    <p class="lead">A secure, timed and mobile-friendly assessment platform for multiple courses.</p>
+    <form class="access-card" method="post" action="{{ url_for('access_test') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <label for="course_code">Enter your course code</label>
+      <div class="inline-form"><input id="course_code" name="course_code" placeholder="e.g. COM 101" required autocomplete="off"><button class="button primary">Continue</button></div>
+      <small>The test title and instructions will appear after a valid code is entered.</small>
+    </form>
+  </div>
+  <div class="hero-panel" aria-hidden="true"><div class="panel-top"><span></span><span></span><span></span></div><div class="mock-question"><b>Question 08 of 20</b><h3>Python is best described as:</h3><p>A programming language</p><p>A database server</p><p>A web browser</p><p>An operating system</p></div><div class="timer-ring">15:00<small>MINUTES</small></div></div>
+</section>
+<section class="feature-grid"><article><b>20</b><h3>Random questions</h3><p>Each student receives a random selection from the uploaded question bank.</p></article><article><b>15</b><h3>Timed minutes</h3><p>The examination submits automatically when the time reaches zero.</p></article><article><b>1×</b><h3>Single attempt</h3><p>Matriculation and examination numbers prevent repeat attempts.</p></article></section>
+{% endblock %}

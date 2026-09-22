@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}Python CBT Assessment System{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{{ url_for('index') }}"><span class="brand-mark">CBT</span><span>Assessment Portal</span></a>
+    {% if session.get('admin_authenticated') %}
+      <nav><a href="{{ url_for('admin_dashboard') }}">Dashboard</a><form action="{{ url_for('admin_logout') }}" method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="link-button">Sign out</button></form></nav>
+    {% else %}<nav><a href="{{ url_for('admin_login') }}">Administrator</a></nav>{% endif %}
+  </header>
+  {% with messages=get_flashed_messages(with_categories=true) %}{% if messages %}<div class="flash-wrap">{% for category,message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}</div>{% endif %}{% endwith %}
+  <main>{% block content %}{% endblock %}</main>
+  <footer><strong>Researcher:</strong> Ogunbode Ayishat Morenikeji <span>•</span> <strong>Supervisor:</strong> Adeniji O. Israel</footer>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

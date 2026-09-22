@@ -1,0 +1,4 @@
+.results-heading{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.results-heading form{display:flex;gap:8px;max-width:470px;width:100%}
+.results-heading input{min-width:0}
+@media(max-width:620px){.results-heading{align-items:stretch;flex-direction:column}.results-heading form{flex-direction:column}}

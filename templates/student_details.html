@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% block title %}Student Details · {{ course.code }}{% endblock %}{% block content %}
+<section class="page-shell narrow"><div class="page-heading"><p class="eyebrow">{{ course.code }}</p><h1>{{ course.title }}</h1><p>20 questions • 15 minutes • One attempt only</p></div>
+<form method="post" class="card form-card"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><h2>Student information</h2><p>Enter your information exactly as it appears on your school records.</p>
+<div class="form-grid"><label>Full name<input name="full_name" value="{{ values.get('full_name','') }}" required></label><label>Matriculation number<input name="matric_number" value="{{ values.get('matric_number','') }}" required></label><label>Phone number<input name="phone_number" type="tel" value="{{ values.get('phone_number','') }}" required></label><label>Email address<input name="email" type="email" value="{{ values.get('email','') }}" required></label><label class="wide">Examination number<input name="exam_number" value="{{ values.get('exam_number','') }}" required></label></div>
+<div class="notice"><strong>Before you begin:</strong> Once you start, the timer cannot be paused and another attempt will not be permitted.</div><button class="button primary wide-button">Start examination</button></form></section>
+{% endblock %}
